@@ -1,0 +1,35 @@
+From 22e657f3f39a6ff2707294a0438502aef7c64e81 Mon Sep 17 00:00:00 2001
+From: pobthebuilder <pobthebuilder@pobthebuilder.org>
+Date: Sun, 30 Apr 2023 19:23:57 -0700
+Subject: [PATCH] Fix unknown type name uint64_t errors.
+
+---
+ device/devhcprintf.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/ROCclr/device/devhcprintf.cpp b/ROCclr/device/devhcprintf.cpp
+index b36f7758..c33273ed 100644
+--- a/ROCclr/device/devhcprintf.cpp
++++ b/ROCclr/device/devhcprintf.cpp
+@@ -24,6 +24,7 @@
+ #include <assert.h>
+ #include <cstdarg>
+ #include <cstdio>
++#include <cstdint>
+ #include <cstring>
+ #include <string>
+ 
+diff --git a/ROCm-OpenCL-Runtime/tools/cltrace/cltrace.cpp b/ROCm-OpenCL-Runtime/tools/cltrace/cltrace.cpp
+index be96298..5ac5b62 100644
+--- a/ROCm-OpenCL-Runtime/tools/cltrace/cltrace.cpp
++++ b/ROCm-OpenCL-Runtime/tools/cltrace/cltrace.cpp
+@@ -17,6 +17,7 @@
+ #include <iostream>
+ #include <cstring>
+ #include <cstdlib>
++#include <cstdint>
+
+ #ifdef _MSC_VER
+ #include <windows.h>
+-- 
+2.40.0

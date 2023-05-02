@@ -1,0 +1,24 @@
+From 23ccabe2cbb35b70d788e738512014bbd64b5dcb Mon Sep 17 00:00:00 2001
+From: pobthebuilder <pobthebuilder@pobthebuilder.org>
+Date: Tue, 25 Apr 2023 21:16:55 -0700
+Subject: [PATCH] Fix OffloadArch.h
+
+---
+ llvm/include/llvm/OffloadArch/OffloadArch.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/llvm/include/llvm/OffloadArch/OffloadArch.h b/llvm/include/llvm/OffloadArch/OffloadArch.h
+index a3accff9f..d8490360b 100644
+--- a/llvm/include/llvm/OffloadArch/OffloadArch.h
++++ b/llvm/include/llvm/OffloadArch/OffloadArch.h
+@@ -9,6 +9,7 @@
+ #ifndef __LLVM_OFFLOAD_OFFLOADARCH_H__
+ #define __LLVM_OFFLOAD_OFFLOADARCH_H__
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+-- 
+2.39.1
+

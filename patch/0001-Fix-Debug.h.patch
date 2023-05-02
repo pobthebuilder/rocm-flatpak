@@ -1,0 +1,25 @@
+From 47a829c548b9ab97f9de2127656915f0dc9bf79e Mon Sep 17 00:00:00 2001
+From: pobthebuilder <pobthebuilder@pobthebuilder.org>
+Date: Tue, 25 Apr 2023 21:54:51 -0700
+Subject: [PATCH] Fix Debug.h
+
+---
+ openmp/libomptarget/include/Debug.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/openmp/libomptarget/include/Debug.h b/openmp/libomptarget/include/Debug.h
+index 942f39fe9..f71e546d3 100644
+--- a/openmp/libomptarget/include/Debug.h
++++ b/openmp/libomptarget/include/Debug.h
+@@ -37,6 +37,8 @@
+ #ifndef _OMPTARGET_DEBUG_H
+ #define _OMPTARGET_DEBUG_H
+ 
++#include <cstdlib>
++#include <string>
+ #include <atomic>
+ #include <mutex>
+ 
+-- 
+2.40.0
+

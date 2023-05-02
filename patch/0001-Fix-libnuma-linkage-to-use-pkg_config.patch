@@ -1,0 +1,40 @@
+From 46d2c4baf2cf716de261a4dd0c6ed3a54aece66b Mon Sep 17 00:00:00 2001
+From: pobthebuilder <pobthebuilder@pobthebuilder.org>
+Date: Sat, 29 Apr 2023 21:14:25 -0700
+Subject: [PATCH] Fix libnuma linkage to use pkg_config.
+
+---
+ CMakeLists.txt | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d00248e..def8df4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -160,9 +160,9 @@ get_os_info()
+ find_package(PkgConfig)
+ # Check for libraries required for building
+ find_library(LIBC NAMES libc.so.6 REQUIRED)
+-find_library(NUMA NAMES numa REQUIRED)
+ message(STATUS "LIBC:" ${LIBC})
+-message(STATUS "NUMA:" ${NUMA})
++
++pkg_check_modules(NUMA REQUIRED numa)
+ 
+ ## If environment variable DRM_DIR is set, the script
+ ## will pick up the corresponding libraries from that path.
+@@ -181,9 +181,10 @@ else()
+     include_directories(${DRM_AMDGPU_INCLUDE_DIRS})
+ endif()
+ include_directories(${DRM_INCLUDE_DIRS})
++include_directories(${NUMA_INCLUDE_DIRS})
+ 
+ target_link_libraries ( ${HSAKMT_TARGET}
+-  PRIVATE ${DRM_LDFLAGS} ${DRM_AMDGPU_LDFLAGS} pthread rt ${LIBC} numa
++  PRIVATE ${DRM_LDFLAGS} ${DRM_AMDGPU_LDFLAGS} pthread rt ${LIBC} ${NUMA_LDFLAGS}
+ )
+ 
+ target_compile_options(${HSAKMT_TARGET} PRIVATE ${DRM_CFLAGS} ${HSAKMT_C_FLAGS})
+-- 
+2.40.1
+

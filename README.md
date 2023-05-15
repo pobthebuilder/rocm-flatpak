@@ -26,6 +26,11 @@ flatpak remote-add rocm-repo ~/rocm-repo --no-gpg-verify
 flatpak install org.freedesktop.Platform.GL.ROCm
 ```
 
+2.a. (optional) Export the build product to a single-file bundle
+```
+flatpak build-bundle --runtime ~/rocm-repo rocm.flatpak org.freedesktop.Platform.GL.ROCm 22.08
+```
+
 3. Using ROCm for OpenCL:
 Currently the Freedesktop SDK doesn't know how to autoload the AMD ROCm
 extension. Until it does you'll need to update the FLATPAK_GL_DRIVERS

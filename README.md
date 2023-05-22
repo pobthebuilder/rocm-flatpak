@@ -37,7 +37,26 @@ extension. Until it does you'll need to update the FLATPAK_GL_DRIVERS
 environment variable to run OpenCL apps. Example:
 ```
 ❯ export FLATPAK_GL_DRIVERS=ROCm:default
-❯ flatpak run --command=/bin/bash --devel org.freedesktop.Platform.ClInfo
+```
+
+If you use systemd, you can use the following to set this permanently
+into your environment:
+```
+mkdir -p ~/.config/environment.d
+echo FLATPAK_GL_DRIVERS=ROCm:default | tee ~/.config/environment.d/60-flatpak_gl_drivers.conf
+```
+After a logout and login, or reboot you should see FLATPAK_GL_DRIVERS
+set in the environment.
+
+4. Notes & Running apps:
+Currently the --device=dri flag doesn't enable access to /dev/kfd, which
+is required for ROCm to function. You'll need to pass --device=all to
+any apps to allow ROCm to see /dev/kfd.  You can use Flatseal to add
+this to apps and make it permanent.
+https://github.com/flatpak/flatpak/issues/5383
+
+```
+❯ flatpak run --device=all --command=/bin/bash --devel org.freedesktop.Platform.ClInfo
 [📦 org.freedesktop.Platform.ClInfo ~]$ clinfo
 Number of platforms                               2
   Platform Name                                   Clover
@@ -55,3 +74,18 @@ Number of platforms                               2
   Platform Extensions function suffix             AMD
   Platform Host timer resolution                  1ns
 ```
+
+There is also a bug in the Freedesktop SDK provided Mesa OpenCL with
+(?) some AMD cards (?) which stops ROCm OpenCL device being used even
+when hard coded in the app.  This happens with e.g. the Radeon 5500M in
+the MacbookPro16,4.
+https://gitlab.freedesktop.org/mesa/mesa/-/issues/4189
+In this case, you can force apps to only "see" the ROCm OpenCL
+implementation by setting the following environment variable into the
+app using e.g. Flatseal:
+
+```
+OCL_ICD_VENDORS=/usr/lib/x86_64-linux-gnu/GL/ROCm
+```
+
+

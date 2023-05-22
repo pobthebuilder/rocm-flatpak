@@ -8,3 +8,4 @@ depends:
 - rocm-hsakmt.bst
 - rocm-hsa.bst
 - rocm-opencl.bst
+- rocminfo.bst

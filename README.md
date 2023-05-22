@@ -85,7 +85,7 @@ implementation by setting the following environment variable into the
 app using e.g. Flatseal:
 
 ```
-OCL_ICD_VENDORS=/usr/lib/x86_64-linux-gnu/GL/ROCm
+OCL_ICD_VENDORS=/usr/lib/x86_64-linux-gnu/GL/ROCm/OpenCL/vendors
 ```
 
 

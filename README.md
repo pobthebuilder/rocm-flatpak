@@ -4,7 +4,7 @@ rocm-flatpak
 ============
 
 This repo is an initial cut of building the AMD ROCm stack for
-Flatpak 22.08.  It currently builds OpenCL. The ROCm Runtime
+Flatpak 23.08.  It currently builds OpenCL. The ROCm Runtime
 Extension it builds sits on top of the Mesa in Freedesktop SDK
 org.freedesktop.Platform.GL.default; so you will need to use both to
 get working OpenGL+OpenCL.
@@ -12,9 +12,10 @@ get working OpenGL+OpenCL.
 Building
 --------
 
-23.08 is based on BuildStream2. 
+23.08 is based on BuildStream2.  
 
 Install Buildstream2 and plugins:
+
 1. Install BuildStream2:
 ```
 sudo dnf install bubblewrap fuse3 git lzip patch python3
@@ -28,12 +29,12 @@ flatpak remote-add --user rocm-repo ~/rocm-repo --no-gpg-verify
 flatpak install --user org.freedesktop.Platform.GL.ROCm
 ```
 
-2.a. (optional) Export the build product to a single-file bundle
+2. 1. (optional) Export the build product to a single-file bundle
 ```
 flatpak build-bundle --runtime ~/rocm-repo rocm.flatpak org.freedesktop.Platform.GL.ROCm 23.08
 ```
 
-3. Using ROCm for OpenCL:
+3. Using ROCm for OpenCL:  
 Currently the Freedesktop SDK doesn't know how to autoload the AMD ROCm
 extension. Until it does you'll need to update the FLATPAK_GL_DRIVERS
 environment variable to run OpenCL apps. Example:

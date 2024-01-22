@@ -78,6 +78,10 @@ Number of platforms                               2
   Platform Host timer resolution                  1ns
 ```
 
+Issues, Workarounds and Caveats
+--------------------------------
+
+1. Freedesktop Bug  
 There is also a bug in the Freedesktop SDK provided Mesa OpenCL with
 (?) some AMD cards (?) which stops ROCm OpenCL device being used even
 when hard coded in the app.  This happens with e.g. the Radeon 5500M in
@@ -91,4 +95,11 @@ app using e.g. Flatseal:
 OCL_ICD_VENDORS=/usr/lib/x86_64-linux-gnu/GL/ROCm/OpenCL/vendors
 ```
 
+2. Older Cards  
+Older cards (RX580, etc) will require additional variables. You can 
+set these into the app with Flatseal, or add them to /etc/environment 
+or similar.
+```
+ROC_ENABLE_PRE_VEGA=1
+```
 

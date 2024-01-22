@@ -12,23 +12,25 @@ get working OpenGL+OpenCL.
 Building
 --------
 
-22.08 is based on BuildStream1. Install Buildstream1 and plugins:
-1. Install BuildStream1:
+23.08 is based on BuildStream2. 
+
+Install Buildstream2 and plugins:
+1. Install BuildStream2:
 ```
-pip3 install 'BuildStream == 1.*'\n
-pip3 install buildstream-external
+sudo dnf install bubblewrap fuse3 git lzip patch python3
+pip3 install buildstream buildstream-external bst-plugins-experimental
 ```
 2. Build this repo, and export to a Flatpak repo:
 ```
 bst build rocm-flatpak.bst
-bst checkout rocm-flatpak.bst ~/rocm-repo
-flatpak remote-add rocm-repo ~/rocm-repo --no-gpg-verify
-flatpak install org.freedesktop.Platform.GL.ROCm
+bst artifact checkout --directory ~/rocm-repo rocm-flatpak.bst
+flatpak remote-add --user rocm-repo ~/rocm-repo --no-gpg-verify
+flatpak install --user org.freedesktop.Platform.GL.ROCm
 ```
 
 2.a. (optional) Export the build product to a single-file bundle
 ```
-flatpak build-bundle --runtime ~/rocm-repo rocm.flatpak org.freedesktop.Platform.GL.ROCm 22.08
+flatpak build-bundle --runtime ~/rocm-repo rocm.flatpak org.freedesktop.Platform.GL.ROCm 23.08
 ```
 
 3. Using ROCm for OpenCL:

@@ -35,3 +35,5 @@ sources:
   ref: rocm-5.4.1-0-g2e52dc810a3a3066d0c72809defae52fdf0f23cb
 - kind: patch
   path: patch/0001-Add-amdgpu-dependency-to-import-correct-include-path.patch
+- kind: patch
+  path: patch/0001-Fix-opencl_blit_objects_stddef.patch

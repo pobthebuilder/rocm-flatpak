@@ -21,7 +21,7 @@ config:
   strip-commands: []
 
 sources:
-- kind: git
+- kind: git_tag
   url: rocm:ROCm-CompilerSupport
-  track: rocm-5.4.3
-  ref: be624c66c58a5ff60081538dff70a235248a8131
+  track: "%{rocmtag}"
+  ref: rocm-5.4.4-0-gbe624c66c58a5ff60081538dff70a235248a8131

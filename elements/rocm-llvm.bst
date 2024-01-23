@@ -32,10 +32,10 @@ variables:
     -DLLVM_INSTALL_TOOLCHAIN_ONLY=OFF
 
 sources:
-- kind: git
+- kind: git_tag
   url: rocm:llvm-project
-  track: rocm-5.4.3
-  ref: a29fe425c7b0e5aba97ed2f95f61fd5ecba68aed
+  track: "%{rocmtag}"
+  ref: rocm-5.4.3-0-ga29fe425c7b0e5aba97ed2f95f61fd5ecba68aed
 - kind: patch
   path: patch/0001-Fix-OffloadArch-h.patch
 - kind: patch

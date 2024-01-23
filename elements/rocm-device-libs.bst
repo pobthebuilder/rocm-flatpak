@@ -15,7 +15,7 @@ variables:
     -DLLVM_DIR="/usr/lib/%{gcc_triplet}/GL/ROCm/llvm/lib/cmake/llvm"
 
 sources:
-- kind: git
+- kind: git_tag
   url: rocm:ROCm-Device-Libs
-  track: rocm-5.4.3
-  ref: 4d86a313a33027cff82dc73fe9b8395a7a96eb04
+  track: "%{rocmtag}"
+  ref: rocm-5.4.4-0-g4d86a313a33027cff82dc73fe9b8395a7a96eb04

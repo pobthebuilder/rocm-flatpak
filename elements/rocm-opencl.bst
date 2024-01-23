@@ -32,15 +32,15 @@ config:
     # might need ldconfig magic here
 
 sources:
-- kind: git
+- kind: git_tag
   url: rocm:ROCm-OpenCL-Runtime
-  track: rocm-5.4.3
+  track: "%{rocmtag}"
   directory: ROCm-OpenCL-Runtime
-  ref: 00e0533578a588da2c0834c58d550e9379d17e49
-- kind: git
+  ref: rocm-5.4.4-0-g00e0533578a588da2c0834c58d550e9379d17e49
+- kind: git_tag
   url: rocmdt:ROCclr
-  track: rocm-5.4.3
+  track: "%{rocmtag}"
   directory: ROCclr
-  ref: ccd065214094837dd59a45aa5111d860aff38ecf
+  ref: rocm-5.4.4-0-gccd065214094837dd59a45aa5111d860aff38ecf
 - kind: patch
   path: patch/0001-Fix-unknown-type-name-uint64_t-errors.patch

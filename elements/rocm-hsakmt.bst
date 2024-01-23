@@ -15,7 +15,8 @@ depends:
 
 environment:
   # libdrm.pc
-  PKG_CONFIG_PATH: /usr/lib/%{gcc_triplet}/GL/ROCm/lib/pkgconfig:/usr/lib/%{gcc_triplet}/GL/default/lib/pkgconfig
+  PKG_CONFIG_PATH: 
+    /usr/lib/%{gcc_triplet}/GL/ROCm/lib/pkgconfig:/usr/lib/%{gcc_triplet}/GL/default/lib/pkgconfig
 
 variables:
   cmake-local: |
@@ -23,9 +24,9 @@ variables:
     -DCMAKE_CXX_COMPILER="/usr/lib/%{gcc_triplet}/GL/ROCm/bin/clang++"
 
 sources:
-- kind: git
+- kind: git_tag
   url: rocm:ROCT-Thunk-Interface
-  track: rocm-5.4.3
-  ref: 2d55276bfa186a47611cdd2fc20879dacb506a9a
+  track: "%{rocmtag}"
+  ref: rocm-5.4.4-0-g2d55276bfa186a47611cdd2fc20879dacb506a9a
 - kind: patch
   path: patch/0001-Fix-libnuma-linkage-to-use-pkg_config.patch

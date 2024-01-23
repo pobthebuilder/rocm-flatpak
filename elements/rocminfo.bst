@@ -17,17 +17,18 @@ runtime-depends:
 
 environment:
   # libdrm.pc
-  PKG_CONFIG_PATH: /usr/lib/%{gcc_triplet}/GL/ROCm/lib/pkgconfig:/usr/lib/%{gcc_triplet}/GL/default/lib/pkgconfig
+  PKG_CONFIG_PATH: 
+    /usr/lib/%{gcc_triplet}/GL/ROCm/lib/pkgconfig:/usr/lib/%{gcc_triplet}/GL/default/lib/pkgconfig
 
 variables:
   cmake-local: |
     -DROCRTST_BLD_TYPE=Release
 
 sources:
-- kind: git
+- kind: git_tag
   url: rocm:rocminfo
-  track: rocm-5.4.3
-  ref: aa8930552c6993ed9db1a1c0630017a14b49a1e5
+  track: "%{rocmtag}"
+  ref: rocm-5.4.4-0-gd8f236cd8180ee0f1fc1da497d0f576a446b86ab
 - kind: patch
   path: patch/0001-Find-drm-and-drm_amdgpu-paths.patch
 

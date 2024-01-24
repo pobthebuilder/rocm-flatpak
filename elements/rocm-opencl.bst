@@ -36,11 +36,11 @@ sources:
   url: rocm:ROCm-OpenCL-Runtime
   track: "%{rocmtag}"
   directory: ROCm-OpenCL-Runtime
-  ref: rocm-5.4.4-0-g00e0533578a588da2c0834c58d550e9379d17e49
+  ref: rocm-5.5.1-0-gd74287f59b8626f48343d1e9adc7ff99a1fa0a19
 - kind: git_tag
   url: rocmdt:ROCclr
   track: "%{rocmtag}"
   directory: ROCclr
-  ref: rocm-5.4.4-0-gccd065214094837dd59a45aa5111d860aff38ecf
+  ref: rocm-5.5.0-0-ge047204465e75a62904f95152732c30026534111
 - kind: patch
   path: patch/0001-Fix-unknown-type-name-uint64_t-errors.patch

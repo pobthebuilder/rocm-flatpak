@@ -32,7 +32,7 @@ sources:
 - kind: git_tag
   url: rocm:ROCR-Runtime
   track: "%{rocmtag}"
-  ref: rocm-5.4.1-0-g2e52dc810a3a3066d0c72809defae52fdf0f23cb
+  ref: rocm-5.5.0-0-g3b939c398bdac0c2b9a860ff9a0ed0be0c80f911
 - kind: patch
   path: patch/0001-Add-amdgpu-dependency-to-import-correct-include-path.patch
 - kind: patch

@@ -51,13 +51,7 @@ echo FLATPAK_GL_DRIVERS=ROCm:default | tee ~/.config/environment.d/60-flatpak_gl
 After a logout and login, or reboot you should see FLATPAK_GL_DRIVERS
 set in the environment.
 
-4. Notes & Running apps:
-Currently the --device=dri flag doesn't enable access to /dev/kfd, which
-is required for ROCm to function. You'll need to pass --device=all to
-any apps to allow ROCm to see /dev/kfd.  You can use Flatseal to add
-this to apps and make it permanent.
-https://github.com/flatpak/flatpak/issues/5383
-
+ClInfo:
 ```
 ❯ flatpak run --device=all --command=/bin/bash --devel org.freedesktop.Platform.ClInfo
 [📦 org.freedesktop.Platform.ClInfo ~]$ clinfo
@@ -80,8 +74,14 @@ Number of platforms                               2
 
 Issues, Workarounds and Caveats
 --------------------------------
+1. /dev/kfd
+Currently the --device=dri flag doesn't enable access to /dev/kfd, which
+is required for ROCm to function. You'll need to pass --device=all to
+any apps to allow ROCm to see /dev/kfd.  You can use Flatseal to add
+this to apps and make it permanent.
+https://github.com/flatpak/flatpak/issues/5383
 
-1. Freedesktop Bug  
+2. Freedesktop Bug  
 There is also a bug in the Freedesktop SDK provided Mesa OpenCL with
 (?) some AMD cards (?) which stops ROCm OpenCL device being used even
 when hard coded in the app.  This happens with e.g. the Radeon 5500M in
@@ -95,7 +95,7 @@ app using e.g. Flatseal:
 OCL_ICD_VENDORS=/usr/lib/x86_64-linux-gnu/GL/ROCm/OpenCL/vendors
 ```
 
-2. Older Cards  
+3. Old Cards  
 Older cards (RX580, etc) will require additional variables. You can 
 set these into the app with Flatseal, or add them to /etc/environment 
 or similar.

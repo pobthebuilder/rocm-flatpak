@@ -41,6 +41,6 @@ sources:
   url: rocmdt:ROCclr
   track: "%{rocmtag}"
   directory: ROCclr
-  ref: rocm-5.5.0-0-ge047204465e75a62904f95152732c30026534111
+  ref: rocm-5.5.1-0-gd7491f0e6824cfc0836c6c24f432afd4da7888e4
 - kind: patch
   path: patch/0001-Fix-unknown-type-name-uint64_t-errors.patch

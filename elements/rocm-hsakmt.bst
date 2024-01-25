@@ -27,6 +27,6 @@ sources:
 - kind: git_tag
   url: rocm:ROCT-Thunk-Interface
   track: "%{rocmtag}"
-  ref: rocm-5.5.1-0-g695ec62187ba0708e3f8a960c2b75b877c2521a9
+  ref: rocm-5.6.1-0-g8a9d0231a94f73ec5396b296c36fdfd5fe13ff09
 - kind: patch
   path: patch/0001-Fix-libnuma-to-use-pkg_config.patch

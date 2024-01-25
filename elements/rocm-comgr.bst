@@ -24,4 +24,4 @@ sources:
 - kind: git_tag
   url: rocm:ROCm-CompilerSupport
   track: "%{rocmtag}"
-  ref: rocm-5.5.1-0-g927da5f3d9689fe1ff936701d7c3a7c9bdcaf768
+  ref: rocm-5.6.1-0-gea6ba24c9f48aa1b4c126c1dea104e06fba13e1a

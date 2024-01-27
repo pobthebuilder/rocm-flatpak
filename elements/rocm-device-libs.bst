@@ -18,4 +18,4 @@ sources:
 - kind: git_tag
   url: rocm:ROCm-Device-Libs
   track: "%{rocmtag}"
-  ref: rocm-5.6.1-0-g2b9acb09a3808d80c61ab89235a7cf487f52e955
+  ref: rocm-5.7.0-0-g78b5d1068a1e18e03d06ab211d2414482cec9bce

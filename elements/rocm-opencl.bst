@@ -12,14 +12,11 @@ build-depends:
 - rocm-hsa.bst
 
 variables:
-  command-subdir: ROCm-OpenCL-Runtime
   cmake-local: |
     -DCMAKE_C_COMPILER="/usr/lib/%{gcc_triplet}/GL/ROCm/bin/clang" \
     -DCMAKE_CXX_COMPILER="/usr/lib/%{gcc_triplet}/GL/ROCm/bin/clang++" \
-    -DBUILD_ICD=OFF \
-    -DOCL_ROOT="/usr/lib/%{gcc_triplet}/GL/default" \
-    -DROCCLR_PATH=%{build-root}/ROCclr \
-    -DAMD_OPENCL_PATH=%{build-root}/ROCm-OpenCL-Runtime
+    -DCLR_BUILD_OCL=ON \
+    -DBUILD_ICD=OFF
 
 config:
   strip-commands: []
@@ -33,12 +30,6 @@ config:
 
 sources:
 - kind: git_tag
-  url: rocm:ROCm-OpenCL-Runtime
+  url: rocm:clr
   track: "%{rocmtag}"
-  directory: ROCm-OpenCL-Runtime
-  ref: rocm-5.6.0-0-g6ec44e04f4a78e7f462d859a32f1b0f2ae609878
-- kind: git_tag
-  url: rocmdt:ROCclr
-  track: "%{rocmtag}"
-  directory: ROCclr
-  ref: rocm-5.6.0-0-g5a27d34fbc6d5f7dabbb22585986170f50c851ef
+  ref: rocm-5.7.0-0-gd1770ee1baf5ede2e723490024d5038e95df85b6

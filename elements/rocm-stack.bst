@@ -3,6 +3,7 @@ depends:
 - numactl.bst
 - rocm-cmake.bst
 - rocm-llvm.bst
+- rocm-hipcc.bst
 - rocm-device-libs.bst
 - rocm-comgr.bst
 - rocm-hsakmt.bst

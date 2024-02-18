@@ -1,10 +1,5 @@
 kind: junction
 
-#config:
-#  options:
-#    target_arch: '%{arch}'
-#    bootstrap_build_arch: '%{arch}'
-
 sources:
 - kind: git_tag
   url: gitlab:freedesktop-sdk/freedesktop-sdk.git

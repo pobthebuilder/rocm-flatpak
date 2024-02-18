@@ -7,9 +7,7 @@ config:
   directory: "%{prefix}"
   exclude:
     - debug
-    - docs
     - locale
-    - devel
 
   metadata:
     Runtime:

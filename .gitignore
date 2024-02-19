@@ -1,0 +1,18 @@
+# Ignore buildstream local state directories
+.bst
+
+# Rust hello world test
+target/
+
+# Ignore caches
+__pycache__
+
+# Ignore virtual envs
+.venv/
+
+# Ignore local testing
+repo/
+runtimes/
+.flatpak-builder/
+app/
+runtime/

@@ -2,6 +2,7 @@ kind: flatpak_image
 
 build-depends:
 - rocm-stack.bst
+- rocm-metainfo.bst
 
 config:
   directory: "%{prefix}"

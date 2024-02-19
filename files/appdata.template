@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="runtime">
+  <id>__APP_ID__</id>
+  <metadata_license>CC0</metadata_license>
+  <project_license>LicenseRef-proprietary=https://rocm.docs.amd.com/en/latest/about/license.html</project_license>
+  <name>AMD ROCm™</name>
+  <summary>AMD ROCm™</summary>
+  <releases>
+__RELEASES__
+  </releases>
+  <description>
+    <p>
+    Open software stack that includes a broad set of programming models, tools, compilers, libraries, and runtimes for AI and HPC solution development on AMD GPUs
+    </p>
+  </description>
+  <url type="homepage">https://www.amd.com/en/products/software/rocm.html</url>
+</component>
+

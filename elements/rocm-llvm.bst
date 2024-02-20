@@ -35,7 +35,7 @@ sources:
 - kind: git_tag
   url: rocm:llvm-project
   track: "%{rocmtag}"
-  ref: rocm-6.0.0-0-g7208e8d15fbf218deb74483ea8c549c67ca4985e
+  ref: rocm-6.0.2-0-gaf27734ed982b52a9f1be0f035ac91726fc697e4
 - kind: patch
   path: patch/0001-Fix-OffloadArch-h.patch
 - kind: patch

@@ -3,8 +3,7 @@ description: |
   ROCm CMake
 
 build-depends:
-- filename: public-stacks/buildsystem-cmake.bst
-  junction: freedesktop-sdk.bst
+- freedesktop-sdk.bst:public-stacks/buildsystem-cmake.bst
 
 sources:
 - kind: git_tag

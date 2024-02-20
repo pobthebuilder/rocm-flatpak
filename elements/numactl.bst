@@ -5,7 +5,7 @@ build-depends:
 
 variables:
   conf-args: |
-    --prefix="/usr/lib/%{gcc_triplet}/GL/ROCm"
+    --prefix="%{prefix}"
 
 sources:
 - kind: git_tag

@@ -8,7 +8,6 @@ build-depends:
 variables:
   app-id: >-
     org.freedesktop.Platform.GL.ROCm
-  flatpak_xmldir: "%{prefix}/share/app-info/xmls"
 
 config:
   install-commands:
@@ -34,7 +33,7 @@ config:
         --components ${app_id} \
         --prefix %{prefix} \
         --result-root %{install-root} \
-        --data-dir %{install-root}%{flatpak_xmldir} \
+        --data-dir %{install-root}%{prefix}/share/app-info/xmls \
         --origin ${app_id} \
         %{install-root}
     done

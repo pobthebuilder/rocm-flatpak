@@ -1,6 +1,6 @@
 kind: cmake
 description: |
-  ROCm OpenCL
+  ROCclr Compute Language Runtimes
 
 build-depends:
 - freedesktop-sdk.bst:sdk.bst
@@ -11,18 +11,22 @@ build-depends:
 - ply.bst
 - rocm-llvm.bst
 - rocm-hipcc.bst
+- rocr-runtime.bst
+
+depends:
+# https://github.com/ROCm/ROCclr/issues/38
 - rocm-comgr.bst
-- rocm-hsa.bst
+- rocm-device-libs.bst
 
 variables:
   command-subdir: clr
   cmake-local: |
-    -DCMAKE_C_COMPILER="/usr/lib/%{gcc_triplet}/GL/ROCm/bin/clang" \
-    -DCMAKE_CXX_COMPILER="/usr/lib/%{gcc_triplet}/GL/ROCm/bin/clang++" \
+    -DCMAKE_C_COMPILER="%{prefix}/bin/clang" \
+    -DCMAKE_CXX_COMPILER="%{prefix}/bin/clang++" \
     -DCLR_BUILD_OCL=ON \
     -DCLR_BUILD_HIP=ON \
     -DHIP_COMMON_DIR="%{build-root}/hip" \
-    -DHIPCC_BIN_DIR="/usr/lib/%{gcc_triplet}/GL/ROCm/hip/bin" \
+    -DHIPCC_BIN_DIR="%{prefix}/hip/bin" \
     -DBUILD_ICD=OFF
 
 config:
@@ -30,9 +34,9 @@ config:
   install-commands:
   - |
     %{make-install}
-    mkdir -p %{install-root}/%{prefix}/OpenCL/vendors
-    touch %{install-root}/%{prefix}/OpenCL/vendors/amdocl64.icd
-    echo libamdocl64.so > %{install-root}/%{prefix}/OpenCL/vendors/amdocl64.icd
+    mkdir -p %{install-root}%{prefix}/OpenCL/vendors
+    touch %{install-root}%{prefix}/OpenCL/vendors/amdocl64.icd
+    echo libamdocl64.so > %{install-root}%{prefix}/OpenCL/vendors/amdocl64.icd
     # might need ldconfig magic here
 
 sources:

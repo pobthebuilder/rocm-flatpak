@@ -1,17 +1,15 @@
 kind: cmake
 description: |
-  ROCm Info
+  ROCt Library - user-mode API to interact with the ROCk driver
 
 build-depends:
 - freedesktop-sdk.bst:sdk.bst
 - freedesktop-sdk.bst:extensions/mesa/libdrm.bst
 - rocm-cmake.bst
-- rocr-runtime.bst
-- roct-thunk.bst
-- rocclr.bst
+- rocm-llvm.bst
 
-runtime-depends:
-- freedesktop-sdk.bst:components/kmod.bst
+depends:
+- numactl.bst
 
 environment:
   # libdrm.pc
@@ -19,13 +17,13 @@ environment:
 
 variables:
   cmake-local: |
-    -DROCRTST_BLD_TYPE=Release
+    -DCMAKE_C_COMPILER="%{prefix}/bin/clang" \
+    -DCMAKE_CXX_COMPILER="%{prefix}/bin/clang++"
 
 sources:
 - kind: git_tag
-  url: rocm:rocminfo
+  url: rocm:ROCT-Thunk-Interface
   track: "%{rocmtag}"
-  ref: rocm-5.7.1-0-gc8db38ede26422066d0faaf4e736eb6dad9b8529
+  ref: rocm-5.7.1-0-g5268ea80e32a6f09f911114e12a20a8176055163
 - kind: patch
-  path: patch/0001-Find-drm-and-drm_amdgpu-paths.patch
-
+  path: patch/0001-Fix-libnuma-to-use-pkg_config.patch

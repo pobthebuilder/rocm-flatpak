@@ -1,18 +1,15 @@
 kind: cmake
 description: |
-  ROCm HSA
+  ROCr Runtime - HSA Runtime API and runtime for ROCm
 
 build-depends:
-- filename: sdk.bst
-  junction: freedesktop-sdk.bst
-- filename: extensions/mesa/libdrm.bst
-  junction: freedesktop-sdk.bst
+- freedesktop-sdk.bst:sdk.bst
+- freedesktop-sdk.bst:extensions/mesa/libdrm.bst
 # for xxd
-- filename: components/vim.bst
-  junction: freedesktop-sdk.bst
+- freedesktop-sdk.bst:components/vim.bst
 - rocm-cmake.bst
 - rocm-llvm.bst
-- rocm-hsakmt.bst
+- roct-thunk.bst
 - rocm-device-libs.bst
 
 environment:
@@ -22,8 +19,8 @@ environment:
 variables:
   command-subdir: src
   cmake-local:
-    -DCMAKE_C_COMPILER="/usr/lib/%{gcc_triplet}/GL/ROCm/bin/clang" \
-    -DCMAKE_CXX_COMPILER="/usr/lib/%{gcc_triplet}/GL/ROCm/bin/clang++"
+    -DCMAKE_C_COMPILER="%{prefix}/bin/clang" \
+    -DCMAKE_CXX_COMPILER="%{prefix}/bin/clang++"
 
 config:
   strip-commands: []

@@ -3,10 +3,10 @@ description: |
   ROCm Compiler Support
 
 build-depends:
-- filename: public-stacks/buildsystem-cmake.bst
-  junction: freedesktop-sdk.bst
+- freedesktop-sdk.bst:public-stacks/buildsystem-cmake.bst
 - rocm-cmake.bst
 - rocm-llvm.bst
+- rocm-device-libs.bst
 
 depends:
 - rocm-device-libs.bst
@@ -14,8 +14,8 @@ depends:
 variables:
   command-subdir: lib/comgr
   cmake-local: |
-    -DCMAKE_C_COMPILER="/usr/lib/%{gcc_triplet}/GL/ROCm/bin/clang" \
-    -DCMAKE_CXX_COMPILER="/usr/lib/%{gcc_triplet}/GL/ROCm/bin/clang++"
+    -DCMAKE_C_COMPILER="%{prefix}/bin/clang" \
+    -DCMAKE_CXX_COMPILER="%{prefix}/bin/clang++"
 
 config:
   strip-commands: []

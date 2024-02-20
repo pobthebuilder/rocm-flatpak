@@ -3,16 +3,15 @@ description: |
   ROCm Device Libs
 
 build-depends:
-- filename: sdk.bst
-  junction: freedesktop-sdk.bst
+- freedesktop-sdk.bst:sdk.bst
 - rocm-cmake.bst
 - rocm-llvm.bst
 
 variables:
   cmake-local:
-    -DCMAKE_C_COMPILER="/usr/lib/%{gcc_triplet}/GL/ROCm/bin/clang" \
-    -DCMAKE_CXX_COMPILER="/usr/lib/%{gcc_triplet}/GL/ROCm/bin/clang++" \
-    -DLLVM_DIR="/usr/lib/%{gcc_triplet}/GL/ROCm/llvm/lib/cmake/llvm"
+    -DCMAKE_C_COMPILER="%{prefix}/bin/clang" \
+    -DCMAKE_CXX_COMPILER="%{prefix}/bin/clang++" \
+    -DLLVM_DIR="%{prefix}/llvm/lib/cmake/llvm"
 
 sources:
 - kind: git_tag

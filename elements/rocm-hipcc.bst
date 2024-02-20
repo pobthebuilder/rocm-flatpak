@@ -1,24 +1,19 @@
 kind: cmake
 description: |
-  ROCm HIP
+  ROCm HIPCC
 
 build-depends:
 - freedesktop-sdk.bst:sdk.bst
 - freedesktop-sdk.bst:components/vim.bst
 - rocm-llvm.bst
-- rocm-comgr.bst
-- rocm-hsa.bst
 
 variables:
   # TODO dwz has issues with DWARF v5 included in hipcc.bin
   optimize-debug: "false"
 
   cmake-local: |
-    -DCMAKE_C_COMPILER="/usr/lib/%{gcc_triplet}/GL/ROCm/bin/clang" \
-    -DCMAKE_CXX_COMPILER="/usr/lib/%{gcc_triplet}/GL/ROCm/bin/clang++"
-
-#config:
-#  strip-commands: []
+    -DCMAKE_C_COMPILER="%{prefix}/bin/clang" \
+    -DCMAKE_CXX_COMPILER="%{prefix}/bin/clang++"
 
 sources:
 - kind: git_tag

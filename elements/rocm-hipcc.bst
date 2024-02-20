@@ -19,6 +19,6 @@ sources:
 - kind: git_tag
   url: rocm:HIPCC
   track: "%{rocmtag}"
-  ref: rocm-5.7.1-0-g3555aa113d350e94c8d17c5ff519d1acaf9aefb9
+  ref: rocm-6.0.2-0-g7ae382ceec92014aa729a4d6773515b42dc3a209
 - kind: patch
   path: patch/0001-Fix-hipcc-stdc++fs.patch

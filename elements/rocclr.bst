@@ -44,9 +44,9 @@ sources:
   url: rocm:clr
   track: "%{rocmtag}"
   directory: clr
-  ref: rocm-5.7.1-0-g1949b1621a802ffb1492616adbae6154bfbe64ef
+  ref: rocm-6.0.0-0-gd62f6a1716e0315324fd32de6578eb183263505d
 - kind: git_tag
   url: rocm:HIP
   track: "%{rocmtag}"
   directory: hip
-  ref: rocm-5.7.1-0-g80681169ae20de8f8025b4fad799204c3ae7de50
+  ref: rocm-6.0.0-0-gf7c33a4cbb660011cf9429b8b65d631066cd51d2

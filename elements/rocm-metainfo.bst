@@ -43,6 +43,6 @@ sources:
   full-clone: True
   url: rocm:ROCm
   track: "%{rocmtag}"
-  ref: rocm-5.7.1-0-g365b31728d384bafa59208777e4cc2fb2d2e69ca
+  ref: rocm-6.0.0-0-g182827150587dccbe3fe242b378aa14ad0370449
 - kind: local
   path: files/appdata.template

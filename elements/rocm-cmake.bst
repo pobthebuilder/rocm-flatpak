@@ -9,4 +9,4 @@ sources:
 - kind: git_tag
   url: rocm:rocm-cmake
   track: "%{rocmtag}"
-  ref: rocm-5.7.1-0-g15cbb2e47f0b9ec758d89227f20ef3b4b23aa723
+  ref: rocm-6.0.2-0-g5a34e72d9f113eb5d028e740c2def1f944619595

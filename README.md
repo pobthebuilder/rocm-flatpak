@@ -18,8 +18,8 @@ Install Buildstream2 and plugins:
 
 1. Install BuildStream2:
 ```
-sudo dnf install bubblewrap fuse3 git lzip patch python3
-pip3 install buildstream buildstream-external bst-plugins-experimental
+sudo dnf install bubblewrap fuse3 git lzip patch python3 python3-pip
+pip3 install buildstream buildstream-external bst-plugins-experimental buildstream-plugins dulwich
 ```
 2. Build this repo, and export to a Flatpak repo:
 ```

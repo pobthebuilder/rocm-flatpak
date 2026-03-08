@@ -12,14 +12,15 @@ get working OpenGL+OpenCL.
 Building
 --------
 
-23.08 is based on BuildStream2.  
+23.08 is based on BuildStream2.
 
 Install Buildstream2 and plugins:
 
 1. Install BuildStream2:
 ```
-sudo dnf install bubblewrap fuse3 git lzip patch python3 python3-pip
-pip3 install buildstream buildstream-external bst-plugins-experimental buildstream-plugins dulwich
+sudo dnf install bubblewrap fuse3 git lzip patch python3 python3-pip python3-devel
+sudo pip3 install dulwich==0.24.10 click requests
+pip3 install buildstream buildstream-external buildstream-plugins bst-plugins-experimental
 ```
 2. Build this repo, and export to a Flatpak repo:
 ```
@@ -34,7 +35,7 @@ flatpak install --user org.freedesktop.Platform.GL.ROCm
 flatpak build-bundle --runtime ~/rocm-repo rocm.flatpak org.freedesktop.Platform.GL.ROCm 23.08
 ```
 
-3. Using ROCm for OpenCL:  
+3. Using ROCm for OpenCL:
 Currently the Freedesktop SDK doesn't know how to autoload the AMD ROCm
 extension. Until it does you'll need to update the FLATPAK_GL_DRIVERS
 environment variable to run OpenCL apps. Example:
@@ -81,7 +82,7 @@ any apps to allow ROCm to see /dev/kfd.  You can use Flatseal to add
 this to apps and make it permanent.
 https://github.com/flatpak/flatpak/issues/5383
 
-2. Freedesktop Bug  
+2. Freedesktop Bug
 There is also a bug in the Freedesktop SDK provided Mesa OpenCL with
 (?) some AMD cards (?) which stops ROCm OpenCL device being used even
 when hard coded in the app.  This happens with e.g. the Radeon 5500M in
@@ -95,9 +96,9 @@ app using e.g. Flatseal:
 OCL_ICD_VENDORS=/usr/lib/x86_64-linux-gnu/GL/ROCm/OpenCL/vendors
 ```
 
-3. Old Cards  
-Older cards (RX580, etc) will require additional variables. You can 
-set these into the app with Flatseal, or add them to /etc/environment 
+3. Old Cards
+Older cards (RX580, etc) will require additional variables. You can
+set these into the app with Flatseal, or add them to /etc/environment
 or similar.
 ```
 ROC_ENABLE_PRE_VEGA=1

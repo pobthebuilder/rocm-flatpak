@@ -7,7 +7,6 @@ build-depends:
 - freedesktop-sdk.bst:extensions/mesa/libdrm.bst
 - rocm-cmake.bst
 - rocr-runtime.bst
-- roct-thunk.bst
 - rocclr.bst
 
 runtime-depends:
@@ -25,7 +24,7 @@ sources:
 - kind: git_tag
   url: rocm:rocminfo
   track: "%{rocmtag}"
-  ref: rocm-6.0.2-0-gdd16db1fed07c3d74ecdba307857dbb270258dfe
+  ref: rocm-7.0.1-0-gaec5d6fa53152668207d523ac481cc1ec9fb7298
 - kind: patch
   path: patch/0001-Find-drm-and-drm_amdgpu-paths.patch
 

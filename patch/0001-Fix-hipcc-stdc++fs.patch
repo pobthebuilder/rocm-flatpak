@@ -1,17 +1,17 @@
-From f315e2e1ca64b9c826635a4ede5082f0767ad7cd Mon Sep 17 00:00:00 2001
+From 3a7b636ffda609713b88f1647f0606b037c5ebde Mon Sep 17 00:00:00 2001
 From: pobthebuilder <pobthebuilder@pobthebuilder.org>
 Date: Sat, 17 Feb 2024 21:46:26 +0000
 Subject: [PATCH] Fix hipcc build not to link libstdc++fs.so
 
 ---
- CMakeLists.txt | 3 ---
+ amd/hipcc/CMakeLists.txt | 3 ---
  1 file changed, 3 deletions(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 90743ab..4ae88bd 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -15,9 +15,6 @@ endif()
+diff --git a/amd/hipcc/CMakeLists.txt b/amd/hipcc/CMakeLists.txt
+index 7ed25cb547d0..6f3182ef618e 100755
+--- a/amd/hipcc/CMakeLists.txt
++++ b/amd/hipcc/CMakeLists.txt
+@@ -18,9 +18,6 @@ option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
  set(CMAKE_CXX_STANDARD 17)
  set(CMAKE_CXX_STANDARD_REQUIRED True)
  
@@ -19,8 +19,8 @@ index 90743ab..4ae88bd 100644
 -  libstdc++fs.so)
 -
  set(HIPCC_BIN
-   hipcc.bin)
+   hipcc)
  set(HIPCC_SOURCES
 -- 
-2.43.0
+2.49.0
 

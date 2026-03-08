@@ -26,8 +26,9 @@ variables:
     -DCLR_BUILD_OCL=ON \
     -DCLR_BUILD_HIP=ON \
     -DHIP_COMMON_DIR="%{build-root}/hip" \
-    -DHIPCC_BIN_DIR="%{prefix}/hip/bin" \
-    -DBUILD_ICD=OFF
+    -DHIPCC_BIN_DIR="%{prefix}/bin" \
+    -DBUILD_ICD=OFF \
+    -DHIP_ENABLE_ROCPROFILER_REGISTER=OFF
 
 config:
   strip-commands: []
@@ -44,9 +45,11 @@ sources:
   url: rocm:clr
   track: "%{rocmtag}"
   directory: clr
-  ref: rocm-6.0.2-0-g204d35d16ef5c2c1ea1a4bb25442908a306c857a
+  ref: rocm-7.0.1-0-ga3e329ad8a92d94bb8cdd431ab8e3ccb275a0102
 - kind: git_tag
   url: rocm:HIP
   track: "%{rocmtag}"
   directory: hip
-  ref: rocm-6.0.2-0-g3156cd689d4bb28fd2ee98db79823ae8cc3ad038
+  ref: rocm-7.0.1-0-g2a6e97f84aa2d6063cd6118c68b361172044b51c
+- kind: patch
+  path: patch/0001-Remove-use-of-etc-os-release.patch

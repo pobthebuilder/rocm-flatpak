@@ -18,6 +18,10 @@ jobs:
       - name: "Code Checkout"
         uses: actions/checkout@v5
 
+      - name: "Install node"
+        run: |
+          sudo dnf install -y node
+
       - name: "Read YAML"
         uses: pietrobolcato/action-read-yaml@1.1.0
         id: read_sdk
@@ -44,6 +48,9 @@ jobs:
         if: steps.cache-lookup.outputs.cache-hit != 'true'
         run: bst build freedesktop-sdk.bst:bootstrap-import.bst freedesktop-sdk.bst:components/ostree-minimal.bst freedesktop-sdk.bst:components/appstream-minimal.bst
 
+      - name: "Remove sources from cache"
+        run: rm -rf ~/.cache/buildstream/sources
+
       - name: "Save Buildstream Cache"
         if: steps.cache-lookup.outputs.cache-hit != 'true' && success()
         uses: actions/cache/save@v5
@@ -60,6 +67,10 @@ jobs:
     steps:
       - name: "Code Checkout"
         uses: actions/checkout@v5
+
+      - name: "Install node"
+        run: |
+          sudo dnf install -y node
 
       - name: "Read YAML"
         uses: pietrobolcato/action-read-yaml@1.1.0
@@ -96,6 +107,9 @@ jobs:
         if: steps.cache-lookup.outputs.cache-hit != 'true'
         run: bst build freedesktop-sdk.bst:sdk.bst
 
+      - name: "Remove sources from cache"
+        run: rm -rf ~/.cache/buildstream/sources
+
       - name: "Save Buildstream Cache (SDK)"
         if: steps.cache-lookup.outputs.cache-hit != 'true' && success()
         uses: actions/cache/save@v5
@@ -112,6 +126,10 @@ jobs:
     steps:
       - name: "Code Checkout"
         uses: actions/checkout@v5
+
+      - name: "Install node"
+        run: |
+          sudo dnf install -y node
 
       - name: "Read YAML"
         uses: pietrobolcato/action-read-yaml@1.1.0
@@ -132,11 +150,14 @@ jobs:
       - name: "Install BuildStream2"
         run: |
           sudo dnf group install -y c-development
-          sudo dnf install -y flatpak bubblewrap fuse3 git lzip patch python3-devel python3-pip fuse3 fuse3-devel node
+          sudo dnf install -y flatpak bubblewrap fuse3 git lzip patch python3-devel python3-pip fuse3 fuse3-devel
           pip install buildstream buildstream-plugins buildstream-external bst-plugins-experimental dulwich==0.24.10
 
       - name: "Build .bst file"
         run: bst build rocm-flatpak.bst
+
+      - name: "Remove sources from cache"
+        run: rm -rf ~/.cache/buildstream/sources
 
       - name: "Save Buildstream Cache (SDK)"
         if: steps.restore-cache.outputs.cache-primary-key != steps.restore-cache.outputs.cache-matched-key && success()

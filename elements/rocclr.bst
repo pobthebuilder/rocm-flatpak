@@ -45,11 +45,11 @@ sources:
   url: rocm:clr
   track: "%{rocmtag}"
   directory: clr
-  ref: rocm-7.0.1-0-ga3e329ad8a92d94bb8cdd431ab8e3ccb275a0102
+  ref: rocm-7.0.2-0-g7c9236b1619405085791ab125cf581e293147a8c
 - kind: git_tag
   url: rocm:HIP
   track: "%{rocmtag}"
   directory: hip
-  ref: rocm-7.0.1-0-g2a6e97f84aa2d6063cd6118c68b361172044b51c
+  ref: rocm-7.0.2-0-g642cd90e9bc7c17ec06788321716f8d1284f24a0
 - kind: patch
   path: patch/0001-Remove-use-of-etc-os-release.patch
